@@ -40,6 +40,9 @@ jobs:
       env: 
         DOTNET_CLI_TELEMETRY_OPTOUT: true
 
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
+
     - name: Add GH Package registry
       run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/Julien-Mialon/index.json" -UserName Julien-Mialon -Password ${{ secrets.GITHUB_PACKAGE_TOKEN }}
 
