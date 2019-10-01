@@ -25,8 +25,17 @@ jobs:
       with:
         dotnet-version: 3.0.100
     
+    - name: show env
+      run: export
+      env: 
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      env: 
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
     
     - name: Pack with dotnet
       run: dotnet pack -o ./out --configuration Release --version-suffix pr-$build_id-${{ github.sha }}
+      env: 
+        DOTNET_CLI_TELEMETRY_OPTOUT: true
