@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Storm.Analyzers.AndroidJNIConstructor</PackageId>
+    <PackageVersion>0.9</PackageVersion>
+    <Authors>Julien Mialon</Authors>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Julien-Mialon/Storm.Analyzers/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Julien-Mialon/Storm.Analyzers/AndroidJNIConstructor</PackageProjectUrl>
+    <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Julien-Mialon/Storm.Analyzers</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>AndroidJNIConstructor</Description>
+    <PackageReleaseNotes>Add Xamarin Android JNI Constructor analyzer</PackageReleaseNotes>
+    <Copyright>Copyright Julien Mialon - 2019</Copyright>
+    <PackageTags>AndroidJNIConstructor, analyzers</PackageTags>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.6.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.10" PrivateAssets="all" />
+    <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+
+</Project>
