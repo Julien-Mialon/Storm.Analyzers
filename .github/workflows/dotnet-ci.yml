@@ -17,6 +17,11 @@ jobs:
       with:
         args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_BuildMetaDataPadded > /github/workspace/build_id.txt\""
 
+    - name: Get Git Version 2
+      uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
+      with:
+        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo ::set-env name=build_id2::$GitVersion_BuildMetaDataPadded\""
+
     - name: Try set env variable
       run: echo "::set-env name=build_id::$(cat /home/runner/work/Storm.Analyzers/Storm.Analyzers/build_id.txt)"
 
