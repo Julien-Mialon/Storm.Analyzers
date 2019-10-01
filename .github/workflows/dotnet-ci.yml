@@ -11,12 +11,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    
     - name: Get Git Version
       uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
       with:
         args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo ::set-env name=build_id::$GitVersion_BuildMetaDataPadded\""
 
-    - uses: actions/checkout@v1
+    - name: Try set env variable
+      run: echo "::set-env name=build_id::0001"
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
