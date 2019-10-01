@@ -26,4 +26,4 @@ jobs:
       run: dotnet build --configuration Release
     
     - name: Pack with dotnet
-      run: dotnet pack -o ./out --configuration Release --version-suffix pr-${{ env.build_id }}-${{ github.sha }}
+      run: dotnet pack -o ./out --configuration Release --version-suffix pr-$build_id-${{ github.sha }}
