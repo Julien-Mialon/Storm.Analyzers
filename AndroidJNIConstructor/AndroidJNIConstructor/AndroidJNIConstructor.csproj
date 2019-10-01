@@ -18,7 +18,6 @@
     <Authors>Julien Mialon</Authors>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Julien-Mialon/Storm.Analyzers/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Julien-Mialon/Storm.Analyzers/AndroidJNIConstructor</PackageProjectUrl>
-    <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>
     <RepositoryUrl>https://github.com/Julien-Mialon/Storm.Analyzers</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>AndroidJNIConstructor</Description>
