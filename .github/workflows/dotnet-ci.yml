@@ -39,3 +39,9 @@ jobs:
       run: dotnet pack -o ./out --configuration Release --version-suffix $GitVersion_NuGetPreReleaseTag-$GitVersion_CommitsSinceVersionSourcePadded-${{ github.sha }}
       env: 
         DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    - name: Add GH Package registry
+      run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/Julien-Mialon/index.json" -UserName Julien-Mialon -Password ${{ secrets.GITHUB_PACKAGE_TOKEN }}
+
+    - name: Push nuget package
+      run: nuget push -Source "GitHub" ./out/*.nupkg
