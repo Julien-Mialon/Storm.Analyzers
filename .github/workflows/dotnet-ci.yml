@@ -40,13 +40,13 @@ jobs:
       env: 
         DOTNET_CLI_TELEMETRY_OPTOUT: true
 
-    - name: Rename nuget package
-      run: mv out/$(ls out) out/Storm.Analyzers.AndroidJNIConstructor.nupkg
+#    - name: Rename nuget package
+#      run: mv out/$(ls out) out/Storm.Analyzers.AndroidJNIConstructor.nupkg
 
     - uses: actions/upload-artifact@master
       with: 
-        name: Storm.Analyzers.AndroidJNIConstructor.nupkg
-        path: out/Storm.Analyzers.AndroidJNIConstructor.nupkg
+        name: nuget-packages
+        path: out/
 
   deploy:
     runs-on: windows-latest
@@ -54,8 +54,17 @@ jobs:
     steps:
     - uses: actions/download-artifact@master
       with:
-        name: Storm.Analyzers.AndroidJNIConstructor.nupkg
+        name: nuget-packages
         path: ./out/
+
+    - name: test
+      run: ls
+
+    - name: test
+      run: ls out
+
+    - name: test
+      run: ls out/out
 
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
