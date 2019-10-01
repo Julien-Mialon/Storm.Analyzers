@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v1
@@ -39,6 +39,19 @@ jobs:
       run: dotnet pack -o ./out --configuration Release --version-suffix $GitVersion_NuGetPreReleaseTag-$GitVersion_CommitsSinceVersionSourcePadded-${{ github.sha }}
       env: 
         DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    - uses: actions/upload-artifact@master
+      with: 
+        name: nuget-package
+        path: ./out/*.nupkg
+
+  deploy:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/download-artifact@master
+      with:
+        name: nuget-package
+        path: ./out/
 
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
