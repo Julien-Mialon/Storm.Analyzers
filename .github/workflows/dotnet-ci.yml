@@ -18,15 +18,15 @@ jobs:
     - name: Get Git Version
       uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
       with:
-        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_BuildMetaDataPadded > /github/workspace/build_id.txt\""
-
-    - name: Get Git Version 2
-      uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
-      with:
-        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"export > /github/workspace/version.txt\""
+        args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"export | grep GitVersion_ > /github/workspace/version.txt\""
 
     - name: Try set env variable
-      run: echo "::set-env name=build_id::$(cat /home/runner/work/Storm.Analyzers/Storm.Analyzers/build_id.txt)"
+      run: |
+        while IFS="" read -r line || [ -n "$line" ]; do
+        varname=$(cut -d"=" -f1 <<< "$line" | cut -d" " -f2)
+        value=$(cut -d'"' -f2 <<< "$line")
+        printf '::set-env name=%s::%s\n' "$varname" "$value"
+        done < /home/runner/work/Storm.Analyzers/Storm.Analyzers/version.txt
 
     - name: Show git version
       run: cat /home/runner/work/Storm.Analyzers/Storm.Analyzers/version.txt
