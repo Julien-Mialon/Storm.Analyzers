@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndroidJNIConstructor", "An
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AndroidJNIConstructor", "AndroidJNIConstructor", "{1F8E9783-7F65-40B7-9491-AB30159DB1FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidJNIConstructor.Vsix", "AndroidJNIConstructor\AndroidJNIConstructor.Vsix\AndroidJNIConstructor.Vsix.csproj", "{8393DAB0-28DD-4F33-90FE-FCB0DA3AA23E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,16 @@ Global
 		{24EA3077-D861-4B02-85B3-126C28D51D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24EA3077-D861-4B02-85B3-126C28D51D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24EA3077-D861-4B02-85B3-126C28D51D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8393DAB0-28DD-4F33-90FE-FCB0DA3AA23E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8393DAB0-28DD-4F33-90FE-FCB0DA3AA23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8393DAB0-28DD-4F33-90FE-FCB0DA3AA23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{24EA3077-D861-4B02-85B3-126C28D51D90} = {1F8E9783-7F65-40B7-9491-AB30159DB1FC}
+		{8393DAB0-28DD-4F33-90FE-FCB0DA3AA23E} = {1F8E9783-7F65-40B7-9491-AB30159DB1FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3856CDA5-4E68-42A8-83BC-28589B26BB18}

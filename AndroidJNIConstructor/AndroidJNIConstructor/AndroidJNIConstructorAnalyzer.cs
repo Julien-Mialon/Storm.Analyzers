@@ -139,19 +139,36 @@ namespace AndroidJNIConstructor
                         ParameterSyntax parameterIntPtr = constructorDeclaration.ParameterList.Parameters[0];
                         ParameterSyntax parameterJniHandleOwnership = constructorDeclaration.ParameterList.Parameters[1];
 
+                        // Has correct parameters 
                         if(IsType(parameterIntPtr, intPtrType, context) && IsType(parameterJniHandleOwnership, jniHandleOwnershipType, context))
                         {
-                            return true;
-                        }
+                            // Base is called correctly...
+                            if(constructorDeclaration.Initializer is { } initializer && 
+                                initializer.ThisOrBaseKeyword.IsKind(SyntaxKind.BaseKeyword) && 
+                                initializer.ArgumentList is { } argumentList && 
+                                argumentList.Arguments is { } arguments && 
+                                arguments.Count == 2 && 
+                                IsSameParameter(arguments[0], parameterIntPtr) &&
+                                IsSameParameter(arguments[1], parameterJniHandleOwnership)
+                                )
+                            {
+                                return true;
+                            }
 
-                        //TODO: check if base is called correctly...
+                        }
                     }
                 }
             }
 
             return false;
-        }
 
+            static bool IsSameParameter(ArgumentSyntax argument, ParameterSyntax parameter)
+            {
+                return argument.Expression is IdentifierNameSyntax argumentName &&
+                    parameter.Identifier.ValueText == argumentName.Identifier.ValueText;
+            }
+        }
+        
         private bool IsType(ParameterSyntax parameter, ITypeSymbol type, SemanticModelAnalysisContext context)
         {
             var parameterTypeInfo2 = context.SemanticModel.GetDeclaredSymbol(parameter);
