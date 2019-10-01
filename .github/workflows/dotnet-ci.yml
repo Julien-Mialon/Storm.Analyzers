@@ -57,15 +57,6 @@ jobs:
         name: nuget-packages
         path: ./out/
 
-    - name: test
-      run: ls
-
-    - name: test
-      run: ls out
-
-    - name: test
-      run: ls out/out
-
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
 
