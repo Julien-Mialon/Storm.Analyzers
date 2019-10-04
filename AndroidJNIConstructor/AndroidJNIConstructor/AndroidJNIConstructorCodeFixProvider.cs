@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Composition;
@@ -10,15 +9,15 @@ using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Rename;
-using Microsoft.CodeAnalysis.Text;
 
 namespace AndroidJNIConstructor
 {
     [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AndroidJNIConstructorCodeFixProvider)), Shared]
     public class AndroidJNIConstructorCodeFixProvider : CodeFixProvider
     {
-        private const string title = "Add protected JNI constructor";
+        private static readonly LocalizableString title = new LocalizableResourceString(nameof(AnalyzerResources.ActionTitle), AnalyzerResources.ResourceManager, typeof(AnalyzerResources));
+
+        private const string ACTION_KEY = "ADD_JNI_CTOR";
 
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
@@ -44,9 +43,9 @@ namespace AndroidJNIConstructor
             // Register a code action that will invoke the fix.
             context.RegisterCodeFix(
                 CodeAction.Create(
-                    title: title,
+                    title: title.ToString(),
                     createChangedDocument: c => IncludeJniConstructor(context.Document, declaration, c),
-                    equivalenceKey: title),
+                    equivalenceKey: ACTION_KEY),
                 diagnostic);
         }
 
