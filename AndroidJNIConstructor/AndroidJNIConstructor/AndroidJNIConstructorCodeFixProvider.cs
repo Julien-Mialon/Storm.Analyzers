@@ -12,12 +12,12 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace AndroidJNIConstructor
 {
-	[ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AndroidJNIConstructorCodeFixProvider)), Shared]
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(AndroidJNIConstructorCodeFixProvider)), Shared]
     public class AndroidJNIConstructorCodeFixProvider : CodeFixProvider
     {
-		private static readonly LocalizableString title = new LocalizableResourceString(nameof(AnalyzerResources.ActionTitle), AnalyzerResources.ResourceManager, typeof(AnalyzerResources));
+        private static readonly LocalizableString title = new LocalizableResourceString(nameof(AnalyzerResources.ActionTitle), AnalyzerResources.ResourceManager, typeof(AnalyzerResources));
 
-		private const string ACTION_KEY = "ADD_JNI_CTOR";
+        private const string ACTION_KEY = "ADD_JNI_CTOR";
 
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
